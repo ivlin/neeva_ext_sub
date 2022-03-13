@@ -4,7 +4,7 @@ This colors ads on the DuckDuckGo search engine. Many searches may not yield ads
 
 ![screenshot](./examples/example.png)
 
- 1. Download the files and unzip them
+ 1. Download the files. Unzip if downloaded as a zip file
  2. Go to chrome://extensions (or the appropriate extension location for any chrome-based browser)
  3. Turn on **Developer mode** in the top corner
  4. Click **Load unpacked**
