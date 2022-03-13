@@ -1,0 +1,32 @@
+{
+  "name": "ivlin Neeva Extension",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "description": "Submission for the Neeva Browser Extension. Skeleton set up using extensionizr.com",
+  "icons": {
+    "16": "icons/icon.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "service_worker": "src/bg/background.js"
+  },
+  "action": {
+    "default_icon": "icons/icon.png",
+    "default_title": "ivlin Neeva Extension",
+    "default_popup": "src/page_action/page_action.html",
+    "default_script": "src/page_action/page_action.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://duckduckgo.com/*"
+      ],
+      "js": [
+        "src/inject/inject.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "storage", "tabs"
+  ]
+}
