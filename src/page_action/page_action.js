@@ -3,7 +3,7 @@ async function handleUpdate(result,sender) {
   if ("type" in result) {
     return
   }
-  
+
   document.querySelector("#adCountTotal").innerHTML = result.adCountTotal;
   document.querySelector("#adCount24Hr").innerHTML = result.adCount24HrTotal;
 

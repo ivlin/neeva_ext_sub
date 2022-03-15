@@ -12,7 +12,6 @@ const SEARCH_MODIFIER = "+in+2021";
 const SEARCH_MODIFIER_PATTERN = `.*\\+in\\+2021$`;
 const AD_COLOR = "#D66";
 
-
 /**
  * Set up listeners on initialization
  */
@@ -34,7 +33,7 @@ function updateQuery() {
 	const query_parameters = window.location.search.substring(1).split(QUERY_DELIMITER);
 	for (let ind in query_parameters) {
 		const [key, val] = query_parameters[ind].split(KEY_VALUE_DELIMITER);
-		if (key == QUERY_KEY_BY_SEARCH[SEARCH_ENGINE] && !val.match(SEARCH_MODIFIER_PATTERN)) {
+		if (key == QUERY_KEY_BY_SEARCH[SEARCH_ENGINE] && !val.toLower().match(SEARCH_MODIFIER_PATTERN)) {
 			query_parameters[ind] += SEARCH_MODIFIER;
 			window.location.search = window.location.search.substring(0,1) + query_parameters.join(QUERY_DELIMITER);
 		}
