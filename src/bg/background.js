@@ -33,6 +33,7 @@ chrome.storage.local.get(["adCountTotal", "adCountTimeline", "updateTimestamp"],
 // Callback - handle updates from the current pages
 function handleRead(request, sender, sendResponse) {
   updateTimeline();
+  console.log({ "adCountTotal": adCountTotal, "adCount24HrTotal": adCount24HrTotal, "adsByTab": adsByTab});
   sendResponse({ "adCountTotal": adCountTotal, "adCount24HrTotal": adCount24HrTotal, "adsByTab": adsByTab});
 }
 

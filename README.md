@@ -32,10 +32,11 @@ The content script runs in the browser. It:
  2. This consists of a counter for overall ads.
  3. This also consists of 86400 bin lists. Each bucket represents a second in 24 hours. Every time we get a new ads, we empty the bucket if the bucket is out of date, otherwise we add it into the count. We can find the total ads in the last 24 hours by summing the up to date bins.
  4. This also consists of a map of tab IDs to ads.
- 4. Listens for messages.
- 5. If it receives a type: READ message, it will simply send up to date information on click counts. This is currently used by the popup for display.
- 6. If it receives a type: WRITE message, it will check the request for new ads and a timestamp. It will update the timeline. It will update the tab's counter. It will send a message to the popup script to update in case the popup is open.
+ 5. Listens for messages.
+ 6. If it receives a type: READ message, it will simply send up to date information on click counts. This is currently used by the popup for display.
+ 7. If it receives a type: WRITE message, it will check the request for new ads and a timestamp. It will update the timeline. It will update the tab's counter. It will send a message to the popup script to update in case the popup is open.
 #### Popup script
 The content script runs in the browser. It:
- 1. Updates the extension popup when the user clicks the extension button. This will send a READ request to the background script, which responds with up-to-date information to populate the popup. It gets the tab information for the current window. By using the intersection of the open tabs and the ad counter, it will display ad counts for open tabs.
- 2. It also listens for messages in case new ads come up while the extension is open.
+ 1. Ignores changes from the content script. Maintaining count states in background and popups can get messy, so just use background as source of truth.
+ 2. Updates the extension popup when the user clicks the extension button. This will send a READ request to the background script, which responds with up-to-date information to populate the popup. It gets the tab information for the current window. By using the intersection of the open tabs and the ad counter, it will display ad counts for open tabs.
+ 3. It also listens for messages in case new ads come up while the extension is open.

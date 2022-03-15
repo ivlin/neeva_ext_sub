@@ -45,8 +45,8 @@ function updateQuery() {
  * Color all ads red, send the number and timestamp
  */
 function updateAds() {
-	const ads = document.querySelectorAll('[data-testid="ad"]');
-	ads.forEach((element, id) => { element.style.backgroundColor = AD_COLOR});
+	const ads = document.querySelectorAll('.badge--ad, #ads > *');
+	ads.forEach((element, id) => { element.closest("[data-testid='ad'], .module, #ads > *").style.backgroundColor = AD_COLOR });
 	const diff = ads.length - ad_counter;
 	if (diff){
 		ad_counter += diff;

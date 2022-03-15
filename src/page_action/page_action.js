@@ -1,4 +1,9 @@
-async function handleUpdate(result) {
+async function handleUpdate(result,sender) {
+  // ignore updates from content scripts
+  if ("type" in result) {
+    return
+  }
+  
   document.querySelector("#adCountTotal").innerHTML = result.adCountTotal;
   document.querySelector("#adCount24Hr").innerHTML = result.adCount24HrTotal;
 
